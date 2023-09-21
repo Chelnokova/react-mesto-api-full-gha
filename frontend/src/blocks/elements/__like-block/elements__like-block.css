@@ -1,0 +1,6 @@
+.elements__like-block {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	align-items: center;
+}

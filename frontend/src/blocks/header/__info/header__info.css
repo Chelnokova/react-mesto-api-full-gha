@@ -1,0 +1,6 @@
+.header__info {
+	display: flex;
+	column-gap: 24px;
+	padding: 0 0 46px;
+	font-size: 18px;
+	}

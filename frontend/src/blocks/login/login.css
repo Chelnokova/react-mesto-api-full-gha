@@ -1,0 +1,9 @@
+.login {
+	font-weight: 400;
+	display: grid;
+	justify-content: center;
+	justify-items: center;
+	padding: 60px 0;
+	row-gap: 50px;
+	font-size: 14px;
+}

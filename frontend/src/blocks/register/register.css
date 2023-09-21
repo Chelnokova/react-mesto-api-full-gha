@@ -1,0 +1,8 @@
+.register {
+	font-weight: 400;
+	display: grid;
+	justify-content: center;
+	justify-items: center;
+	padding: 60px 0;
+	font-size: 14px;
+}

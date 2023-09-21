@@ -1,0 +1,12 @@
+.popup__text-error {
+	padding: 0;
+	font-size: 12px;
+	line-height: 15px;
+	color: #FF0000;
+	opacity: 0;
+	min-height: 30px;
+}
+
+.popup__text-error:not(:last-child) {
+	margin: 0 0 10px;
+}

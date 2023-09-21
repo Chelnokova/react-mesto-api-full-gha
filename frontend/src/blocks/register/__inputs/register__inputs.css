@@ -1,0 +1,5 @@
+.register__inputs{
+	display: flex;
+	flex-direction: column;
+	row-gap: 216px;
+}

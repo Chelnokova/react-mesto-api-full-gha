@@ -1,0 +1,8 @@
+.profile__btn-avatar {
+	background: rgba(0, 0, 0, 0.8) url(../../../images/pen.svg) center no-repeat;
+	border: none;
+	padding: 0;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+}
