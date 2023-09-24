@@ -28,7 +28,8 @@ app.use(cors({
     'http://localhost:3001',
     'https://localhost:3001',
     'http://julia.students.nomoredomainsrocks.ru',
-    'https://julia.students.nomoredomainsrocks.ru'],
+    'https://julia.students.nomoredomainsrocks.ru',
+    'https://api.julia.students.nomoredomainsrocks.ru'],
 }));
 
 app.use(requestLogger);
