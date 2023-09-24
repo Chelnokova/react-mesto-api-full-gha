@@ -26,7 +26,9 @@ const limiter = rateLimit({
 app.use(cors({
   origin: [
     'http://localhost:3001',
-    'https://localhost:3001'],
+    'https://localhost:3001',
+    'http://julia.students.nomoredomainsrocks.ru',
+    'https://julia.students.nomoredomainsrocks.ru'],
 }));
 
 app.use(requestLogger);

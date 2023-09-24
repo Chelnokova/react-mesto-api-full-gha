@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 51.250.111.128
 
-Frontend https://...
+Frontend https://julia.students.nomoredomainsrocks.ru
 
-Backend https://...
+Backend https://api.julia.students.nomoredomainsrocks.ru
