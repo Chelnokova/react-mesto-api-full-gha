@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
+const cors = require('cors');
 const { rateLimit } = require('express-rate-limit');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -21,6 +22,12 @@ const limiter = rateLimit({
   standardHeaders: 'draft-7',
   legacyHeaders: false,
 });
+
+app.use(cors({
+  origin: [
+    'http://localhost:3001',
+    'https://localhost:3001'],
+}));
 
 app.use(requestLogger);
 

@@ -38,8 +38,9 @@ function App() {
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cards]) => {
-          setCurrentUser(userData);
-          setCards(cards);
+          setCurrentUser(userData.user);
+          setCards(cards.data);
+		  
         })
         .catch((err) => {
           console.log(err);
@@ -80,13 +81,13 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((user) => (user._id === currentUser._id) || (user === currentUser._id));
 
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard.data : c))
         );
       })
       .catch((err) => console.log(err));
@@ -105,8 +106,9 @@ function App() {
   function handleUpdateUser(name, about) {
     api
       .sendUserData(name, about)
-      .then((data) => {
-        setCurrentUser(data);
+      .then((userData) => {
+        setCurrentUser(userData.data);
+		console.log(userData);
       })
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
@@ -116,17 +118,17 @@ function App() {
     api
       .sendNewAvatar(link)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
       })
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
   }
 
-  function handleAddPlaceSubmit(name, link) {
+  function handleAddPlaceSubmit(cardItem) {
     api
-      .sendNewCard(name, link)
+      .sendNewCard(cardItem.name, cardItem.link)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
       })
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
@@ -168,7 +170,7 @@ function App() {
           if (res) {
             setLoggedIn(true);
             navigate("/", { replace: true });
-            setEmail(res.data.email);
+            setEmail(res.user.email);
           }
         })
         .catch((err) => console.log(err));

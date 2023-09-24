@@ -9,11 +9,12 @@ function Card({
   onCardDelete,
 }) {
   const userData = React.useContext(CurrentUserContext);
-  const isOwn = card.owner._id === userData._id;
-  const isLiked = card.likes.some((i) => i._id === userData._id);
+  const isOwn = (card.owner._id === userData._id) || (card.owner === userData._id);
+  const isLiked = card.likes.some((user) => (user._id === userData._id) || (user === userData._id));
   const cardLikeButtonClassName = `elements__like ${
     isLiked && "elements__like_checked"
   }`;
+
 
   function handleClick() {
     onCardClick(card);
@@ -54,6 +55,6 @@ function Card({
       </article>
     </li>
   );
-}
+};
 
 export default Card;
