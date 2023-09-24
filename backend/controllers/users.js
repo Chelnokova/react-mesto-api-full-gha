@@ -31,7 +31,7 @@ const getUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        throw new BadRequestError('Переданы некорректные данные при создании пользователя.');
+        next(new BadRequestError('Переданы некорректные данные при создании пользователя.'));
       } else {
         next(err);
       }
@@ -116,7 +116,7 @@ const updateUserProfile = (req, res, next) => {
   })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные при обновлении профиля');
+        next(new BadRequestError('Переданы некорректные данные при обновлении профиля'));
       } else {
         next(err);
       }
@@ -141,7 +141,7 @@ const updateUserAvatar = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные при обновлении аватара');
+        next(new BadRequestError('Переданы некорректные данные при обновлении аватара'));
       } else {
         next(err);
       }

@@ -3,9 +3,8 @@ const linkRegex = require('./linkRegex');
 
 const validationAuth = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().min(2).max(30)
-      .email(),
-    password: Joi.string().required().min(6),
+    email: Joi.string().required().email(),
+    password: Joi.string().required().min(8),
   }),
 });
 
@@ -34,7 +33,7 @@ const validationUpdateUser = celebrate({
 
 const validationUpdateAvatar = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().regex(linkRegex),
+    avatar: Joi.string().required().regex(linkRegex),
   }),
 });
 
