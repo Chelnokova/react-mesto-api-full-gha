@@ -23,6 +23,16 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+  useNewUrlParser: true,
+})
+  .then(() => {
+    console.log('Успешно');
+  })
+  .catch((err) => {
+    console.log(`Ошибка ${err}`);
+  });
+
 app.use(cors({
   origin: [
     'http://localhost:3001',
@@ -37,16 +47,6 @@ app.use(requestLogger);
 app.use(express.json());
 app.use(helmet());
 app.use(limiter);
-
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
-  useNewUrlParser: true,
-})
-  .then(() => {
-    console.log('Успешно');
-  })
-  .catch((err) => {
-    console.log(`Ошибка ${err}`);
-  });
 
 app.use('/', express.json());
 app.use('/users', auth, require('./routes/users'));
